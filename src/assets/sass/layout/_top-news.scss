@@ -1,0 +1,27 @@
+.top-news {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  &__content {
+    //height: 10rem;
+    padding: 2.5rem;
+    width: 38rem;
+    background-color: red;
+    margin: 2rem;
+    text-align: left;
+    border-radius: 2rem;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 1.5rem 2rem rgba($color-black, 0.8);
+    }
+  }
+
+  &__img {
+    height: 10rem;
+    width: 30rem;
+    border-radius: 3px;
+  }
+}
