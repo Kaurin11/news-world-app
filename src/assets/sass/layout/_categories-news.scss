@@ -1,0 +1,27 @@
+.categories-news {
+  display: flex;
+
+  &__content {
+    height: 10rem;
+    //padding: 2.5rem;
+    width: 10rem;
+    background-color: red;
+    margin: 1rem;
+    text-align: left;
+    border-radius: 2px;
+    transition: all 0.3s;
+
+    margin-bottom: 5rem;
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 1.5rem 2rem rgba($color-black, 0.8);
+    }
+  }
+
+  &__img {
+    height: 3rem;
+    width: 8rem;
+    border-radius: 2px;
+  }
+}

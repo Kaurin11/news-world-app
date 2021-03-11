@@ -11,5 +11,5 @@ export const getTopNewsUs = () => Axios.get(topNewsUs);
 //ide ovo ispod
 export const topNews = (country) => Axios.get(`${baseRequest}/top-headlines?country=${country}&apiKey=a418cd0fe92444819a4ef4a60486de87`);
 
-export const entertainmentNewsReq = () => Axios.get(`${baseRequest}/top-headlines?country=us&category=entertainment&apiKey=a418cd0fe92444819a4ef4a60486de87`)
+export const categoriesNewsReq = (country,category) => Axios.get(`${baseRequest}/top-headlines?country=${country}&category=${category}&apiKey=a418cd0fe92444819a4ef4a60486de87`)
 
