@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import CategoriesNewsComponent from '../../components/categoriesNewsComponent/categoriesNewsComponent';
+import { generateCategoriesNewsUrl } from '../../constants/routes/routes';
 
 import { categoriesNewsReq} from '../../constants/services/services';
 import Header from '../header/header';
+
+
 
 const Categoires = () => {
 
@@ -11,8 +15,12 @@ const Categoires = () => {
     const[healthNews, setHealthNews] = useState([]);
     const[scienceNews, setScienceNews] = useState([]);
     const[sportNews, setSportNews] = useState([]);
+
+    const history = useHistory();
     
     const [country , setCountry] = useState('us');
+
+    const [open, setOpen] = useState(false);
 
     useEffect(()=> {
         getEntertainmentNews();
@@ -72,10 +80,15 @@ const Categoires = () => {
         }
     }
 
+    const getNewsForCategorie = (categoriesNews) => {
+        history.push(generateCategoriesNewsUrl(categoriesNews));
+        console.log(categoriesNews)
+    }
+
     return(
         <div>
             <Header setCountry={setCountry} />
-            <p>Entertainment</p>
+            <span onClick={() => getNewsForCategorie('entertainment')}>Entertainment</span >
             <div className="categories-news">
                 {entertainmentNews.map((enews) =>{
                     return(
@@ -83,11 +96,12 @@ const Categoires = () => {
                             key={enews.title}
                             urlToImage={enews.urlToImage}
                             title={enews.title}
+                            content={enews.content}
                             />
                     )
                 })}
             </div>
-            <p>General</p>
+            <span onClick={() => getNewsForCategorie('general')}>General</span >
             <div className="categories-news">
                 {generalNews.map((gnews) =>{
                         return(
@@ -95,11 +109,12 @@ const Categoires = () => {
                                 key={gnews.title}
                                 urlToImage={gnews.urlToImage}
                                 title={gnews.title}
+                                content={gnews.content}
                                 />
                         )
                     })}
             </div>
-            <p>Health</p>
+            <span onClick={() => getNewsForCategorie('health')}>Health</span >
             <div className="categories-news">
                 {healthNews.map((hnews) =>{
                         return(
@@ -107,11 +122,12 @@ const Categoires = () => {
                                 key={hnews.title}
                                 urlToImage={hnews.urlToImage}
                                 title={hnews.title}
+                                content={hnews.content}
                                 />
                         )
                     })}
             </div>
-            <p>Science</p>
+            <span onClick={() => getNewsForCategorie('science')}>Science</span >
             <div className="categories-news">
                 {scienceNews.map((snews) =>{
                         return(
@@ -119,11 +135,12 @@ const Categoires = () => {
                                 key={snews.title}
                                 urlToImage={snews.urlToImage}
                                 title={snews.title}
+                                content={snews.content}
                                 />
                         )
                     })}
             </div>
-            <p>Sport</p>
+            <span onClick={() => getNewsForCategorie('sport')}>Sport</span >
             <div className="categories-news">
                 {sportNews.map((spnews) =>{
                         return(
@@ -131,6 +148,7 @@ const Categoires = () => {
                                 key={spnews.title}
                                 urlToImage={spnews.urlToImage}
                                 title={spnews.title}
+                                content={spnews.content}
                                 />
                         )
                     })}

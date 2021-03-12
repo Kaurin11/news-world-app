@@ -32,10 +32,11 @@ const TopNews = () => {
             {topNewsUs.map((news) => {
                 return(
                     <TopNewsComponent
-                        key={news.publishedAt}
+                        key={news.publishedAt + news.title}
                         title={news.title}
                         description={news.description}
                         url={news.url} 
+                        content={news.content}
                         urlToImage={news.urlToImage} />
                 )
             })}

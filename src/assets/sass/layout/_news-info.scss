@@ -1,0 +1,18 @@
+.news-info {
+  &__title {
+    font-size: 3rem;
+    margin: 2rem;
+  }
+
+  &__img {
+    height: 30rem;
+    width: 60%;
+
+    margin-left: 2rem;
+  }
+
+  &__content {
+    font-size: 1.6rem;
+    margin: 2rem;
+  }
+}

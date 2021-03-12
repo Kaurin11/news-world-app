@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { categoriesUrl, mainViewUrl } from './constants/routes/routes';
+import { categoriesUrl, expanUrl, mainViewUrl } from './constants/routes/routes';
 import MainView from './view';
 import Categoires from './view/categories/categories';
+import Expand from './view/expand/expand';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path={mainViewUrl()} component={MainView} />
+          <Route path={expanUrl()} component={Expand} />
           <Redirect to={mainViewUrl()} />
         </Switch>
       </BrowserRouter>
