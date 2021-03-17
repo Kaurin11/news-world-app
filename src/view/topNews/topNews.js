@@ -10,12 +10,12 @@ const TopNews = () => {
 
     useEffect(() => {
         getNewsUs();
-    }, [country]);
+    },[country]);
 
     const getNewsUs =async () => {
         try{
             const{data} = await topNews(country);
-            console.log(data.articles);
+            console.log(data);
             setTopNewsUs(data.articles);
             console.log(topNewsUs)
         }catch(err){
@@ -24,10 +24,14 @@ const TopNews = () => {
     }
 
     console.log(country)
+    console.log('seatopnews')
 
     return(
         <div>
         <Header setCountry={setCountry} />
+        <h1 className="header__primary"> {country === 'us' ? 
+            (<p>&diams; Top News from United State</p>) : 
+            (<p>&diams; Top News from Greath Britain</p>)}</h1>
         <div className="top-news">
             {topNewsUs.map((news) => {
                 return(

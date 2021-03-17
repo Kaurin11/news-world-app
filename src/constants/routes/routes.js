@@ -11,6 +11,6 @@ export const newsInfoUrls = (content,title,urlToImage) => `${mainViewUrl()}/news
 export const categoriesNewsUrl = () => `${mainViewUrl()}/:categoriesNews`;
 export const generateCategoriesNewsUrl = (categoriesNews) =>  categoriesNewsUrl().replace(":categoriesNews", categoriesNews);
 
-
+export const searcheNewsUrl = () => `${mainViewUrl()}/searchNews`;
 
 export const expanUrl = () => '/expand';

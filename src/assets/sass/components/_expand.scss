@@ -1,0 +1,50 @@
+.expand {
+  &__input {
+    display: none;
+    visibility: hidden;
+  }
+
+  &__label {
+    display: block;
+    padding: 0.5rem;
+    text-align: center;
+    border-bottom: 5px dashed #666;
+    color: #333;
+    transition: 0.4s;
+
+    &:hover {
+      color: #000;
+      cursor: pointer;
+    }
+
+    &::before {
+      font-weight: 800;
+      font-size: 25px;
+      content: "+";
+      vertical-align: text-top;
+      display: inline-block;
+      width: 33px;
+      height: 33px;
+      margin: -5px 5px;
+      border-radius: 50%;
+      border: 3px solid #000;
+    }
+  }
+}
+
+#expand {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+#toggle:checked ~ #expand {
+  height: 300px;
+}
+
+#toggle:checked ~ label::before {
+  content: "-";
+}

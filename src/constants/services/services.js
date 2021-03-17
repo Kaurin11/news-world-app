@@ -13,3 +13,6 @@ export const topNews = (country) => Axios.get(`${baseRequest}/top-headlines?coun
 
 export const categoriesNewsReq = (country,category) => Axios.get(`${baseRequest}/top-headlines?country=${country}&category=${category}&apiKey=a418cd0fe92444819a4ef4a60486de87`)
 
+
+
+export const searchNewsReq = (country,terms) => Axios.get(`${baseRequest}/top-headlines?country=${country}&q=${terms}&apiKey=a418cd0fe92444819a4ef4a60486de87`);

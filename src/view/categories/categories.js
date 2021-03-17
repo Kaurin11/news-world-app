@@ -87,7 +87,10 @@ const Categoires = () => {
 
     return(
         <div>
-            <Header setCountry={setCountry} />
+            <Header setCountry={setCountry}/>
+            <h1 className="header__primary"> {country === 'us' ? 
+            (<p>&diams; Top Categories News from United State</p>) : 
+            (<p>&diams; Top Categories News from Greath Britain</p>)}</h1>
             <span onClick={() => getNewsForCategorie('entertainment')}>Entertainment</span >
             <div className="categories-news">
                 {entertainmentNews.map((enews) =>{

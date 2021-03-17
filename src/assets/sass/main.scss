@@ -7,6 +7,10 @@
 @import "base/typography";
 @import "base/utilitlse";
 
+@import "components/button";
+@import "components/search-box";
+@import "components/expand";
+
 @import "layout/header";
 @import "layout/top-news";
 @import "layout/categories-news";

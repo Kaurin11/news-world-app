@@ -6,20 +6,12 @@ const Expand = () => {
 
     return (
       <div>
-        <button
-          onClick={() => setOpen(!open)}
-          aria-controls="example-collapse-text"
-          aria-expanded={open}
-        >
-          click
-        </button>
-        <Collapse in={open}>
-          <div id="example-collapse-text">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-            terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-            labore wes anderson cred nesciunt sapiente ea proident.
-          </div>
-        </Collapse>
+        <input id="toggle" type="checkbox" checked />
+        <label for="toggle">Click to toggle</label>
+        <div id="expand">HHHHH</div>
+        <div>
+          <h1>KKKKKKK</h1>
+        </div>
       </div>
     );
   }

@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { categoriesUrl, expanUrl, mainViewUrl } from './constants/routes/routes';
+import { expanUrl, mainViewUrl } from './constants/routes/routes';
 import MainView from './view';
-import Categoires from './view/categories/categories';
 import Expand from './view/expand/expand';
 
 function App() {

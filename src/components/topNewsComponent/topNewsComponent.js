@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { newsInfoUrls } from '../../constants/routes/routes';
 
 import qs from 'query-string';
+import Button from '../button/button';
 
 const TopNewsComponent = ({title, description,urlToImage, url,content}) => {
 
@@ -19,11 +20,8 @@ const TopNewsComponent = ({title, description,urlToImage, url,content}) => {
         <div className="top-news__content">
             <h1>{title}</h1>
             <img className="top-news__img" src={urlToImage} />
-            <h2>{description}</h2>
-            <a
-            target="_blank"
-            href={url}>More</a>
-            <button onClick={moreHandler}>More</button>
+            <h3>{description}</h3>
+            <Button onClick={moreHandler} className='btn top-news__btn' name={'More'}/>
         </div>
     )
 }

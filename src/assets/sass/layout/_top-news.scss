@@ -5,13 +5,19 @@
 
   &__content {
     //height: 10rem;
-    padding: 2.5rem;
+    padding: 3.5rem;
     width: 38rem;
-    background-color: red;
+    background-image: linear-gradient(
+      to right bottom,
+      rgba($card-bg, 0.8),
+      rgba($color-white, 0.8)
+    );
     margin: 2rem;
     text-align: left;
     border-radius: 2rem;
     transition: all 0.3s;
+
+    position: relative;
 
     &:hover {
       transform: scale(1.01);
@@ -23,5 +29,13 @@
     height: 10rem;
     width: 30rem;
     border-radius: 3px;
+  }
+
+  &__btn {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1rem;
+
+    margin-top: 4.5rem;
   }
 }

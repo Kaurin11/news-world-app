@@ -1,9 +1,10 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import { categoriesUrl, newsInfoUrl, topNewsUrl,categoriesNewsUrl } from '../constants/routes/routes';
+import { categoriesUrl, newsInfoUrl, topNewsUrl,categoriesNewsUrl, searcheNewsUrl } from '../constants/routes/routes';
 import Categoires from './categories/categories';
 import CategoriesNews from './categoriesNews/categoriesNews';
 import NewsInfo from './newsInfo/newsInfo';
+import SearchNews from './searchNews/searchNews';
 import TopNews from './topNews/topNews';
 
 const MainView = () => {
@@ -13,8 +14,10 @@ const MainView = () => {
             <Switch>
                 <Route path={topNewsUrl()} component={TopNews} />
                 <Route path={categoriesUrl()} component={Categoires} />
+                <Route path={searcheNewsUrl()} component={SearchNews} />
                 <Route path={newsInfoUrl()} component={NewsInfo} />
                 <Route path={categoriesNewsUrl()} component={CategoriesNews} />
+                
                 <Redirect to={topNewsUrl()} />                
             </Switch>
         </div>
