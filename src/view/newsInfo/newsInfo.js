@@ -14,12 +14,12 @@ const NewsInfo = ({location}) => {
     console.log(article)
 
     const goBackHandler =() => {
-        history.push(topNewsUrl());
+        history.goBack();
     }
 
     return(
         <div className="news-info">
-            <Header />
+            <Header disabled={true} />
             <div className="news-info__title">{article.title}</div>
             <img className="news-info__img" src={article.urlToImage} />
             <div className="news-info__content">{article.content}</div>
