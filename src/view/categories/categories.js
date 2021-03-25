@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useParams, useRouteMatch } from 'react-router';
 import CategoriesNewsComponent from '../../components/categoriesNewsComponent/categoriesNewsComponent';
-import { generateCategoriesNewsUrl } from '../../constants/routes/routes';
+import { generateCategoriesNewsUrl, generateCategoriesUrls } from '../../constants/routes/routes';
 
 import { categoriesNewsReq} from '../../constants/services/services';
 import Header from '../header/header';
 
+import {connect} from 'react-redux';
 
-
-const Categoires = () => {
+const Categoires = ({countryNews}) => {
 
     const[entertainmentNews, setEntertainmentNews] = useState([]);
     const[generalNews, setGeneralNews] = useState([]);
@@ -17,8 +17,9 @@ const Categoires = () => {
     const[sportNews, setSportNews] = useState([]);
 
     const history = useHistory();
-    
-    const [country , setCountry] = useState('us');
+    const match = useRouteMatch();
+    const {page} = match.params;
+    console.log(page);
 
     const [open, setOpen] = useState(false);
 
@@ -28,11 +29,12 @@ const Categoires = () => {
         getHealthNews();
         getScienceNews();
         getSportNews();
-    },[country]);
+    },[countryNews, page]);
+    
 
     const getEntertainmentNews =async () => {
         try{
-            const{data} = await categoriesNewsReq(country, 'entertainment');
+            const{data} = await categoriesNewsReq(countryNews,page, 'entertainment');
             console.log(data);
             setEntertainmentNews(data.articles);
         }catch(err){
@@ -42,7 +44,7 @@ const Categoires = () => {
 
     const getGeneralNews =async () => {
         try{
-            const{data} = await categoriesNewsReq(country, 'general');
+            const{data} = await categoriesNewsReq(countryNews,page, 'general');
             console.log(data);
             setGeneralNews(data.articles);
         }catch(err){
@@ -52,7 +54,7 @@ const Categoires = () => {
 
     const getHealthNews =async () => {
         try{
-            const{data} = await categoriesNewsReq(country, 'health');
+            const{data} = await categoriesNewsReq(countryNews,page, 'health');
             console.log(data);
             setHealthNews(data.articles);
         }catch(err){
@@ -62,7 +64,7 @@ const Categoires = () => {
 
     const getScienceNews =async () => {
         try{
-            const{data} = await categoriesNewsReq(country, 'science');
+            const{data} = await categoriesNewsReq(countryNews,page, 'science');
             console.log(data);
             setScienceNews(data.articles);
         }catch(err){
@@ -72,7 +74,7 @@ const Categoires = () => {
 
     const getSportNews =async () => {
         try{
-            const{data} = await categoriesNewsReq(country, 'sport');
+            const{data} = await categoriesNewsReq(countryNews,page, 'sport');
             console.log(data);
             setSportNews(data.articles);
         }catch(err){
@@ -85,12 +87,25 @@ const Categoires = () => {
         console.log(categoriesNews)
     }
 
+    // const entertainmentHandler = ()=> {
+    //     setPage(page + 1);
+    // }
+
+    // const generalHandler = ()=> {
+    //     setPage(page + 1);
+    // }
+
+    const moreHandler =() => {
+        history.push(generateCategoriesUrls(page + 1));
+    }
+
     return(
         <div>
-            <Header setCountry={setCountry}/>
-            <h1 className="header__primary"> {country === 'us' ? 
+            <Header/>
+            <h1 className="header__primary"> {countryNews === 'us' ? 
             (<p>&diams; Top Categories News from United State</p>) : 
             (<p>&diams; Top Categories News from Greath Britain</p>)}</h1>
+            <button onClick={moreHandler}>{page}</button>
             <span onClick={() => getNewsForCategorie('entertainment')}>Entertainment</span >
             <div className="categories-news">
                 {entertainmentNews.map((enews) =>{
@@ -103,6 +118,7 @@ const Categoires = () => {
                             />
                     )
                 })}
+            {/* <button onClick={entertainmentHandler}>page</button> */}
             </div>
             <span onClick={() => getNewsForCategorie('general')}>General</span >
             <div className="categories-news">
@@ -116,6 +132,7 @@ const Categoires = () => {
                                 />
                         )
                     })}
+            {/* <button onClick={generalHandler}>{page}</button> */}
             </div>
             <span onClick={() => getNewsForCategorie('health')}>Health</span >
             <div className="categories-news">
@@ -155,9 +172,15 @@ const Categoires = () => {
                                 />
                         )
                     })}
-            </div>
+            </div> 
         </div>
     )
 }
 
-export default Categoires;
+const mapStateToProps = (state) => {
+    return{
+        countryNews : state.newsCountry
+    }
+}
+
+export default connect(mapStateToProps)(Categoires);

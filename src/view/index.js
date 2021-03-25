@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import { categoriesUrl, newsInfoUrl, topNewsUrl,categoriesNewsUrl, searcheNewsUrl } from '../constants/routes/routes';
+import { categoriesUrl,categoriesUrls, newsInfoUrl, topNewsUrl,categoriesNewsUrl, searcheNewsUrl } from '../constants/routes/routes';
 import Categoires from './categories/categories';
 import CategoriesNews from './categoriesNews/categoriesNews';
 import NewsInfo from './newsInfo/newsInfo';
@@ -13,7 +13,7 @@ const MainView = () => {
         <div>
             <Switch>
                 <Route path={topNewsUrl()} component={TopNews} />
-                <Route path={categoriesUrl()} component={Categoires} />
+                <Route path={categoriesUrls()} component={Categoires} />
                 <Route path={searcheNewsUrl()} component={SearchNews} />
                 <Route path={newsInfoUrl()} component={NewsInfo} />
                 <Route path={categoriesNewsUrl()} component={CategoriesNews} />

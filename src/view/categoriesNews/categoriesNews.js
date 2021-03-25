@@ -1,33 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router';
 import TopNewsComponent from '../../components/topNewsComponent/topNewsComponent';
-import { categoriesNewsReq } from '../../constants/services/services';
+import { newsForOneCategoriReq } from '../../constants/services/services';
 import Header from '../header/header';
 
-const CategoriesNews = () => {
+import {connect} from 'react-redux';
+
+const CategoriesNews = ({countryNews}) => {
 
     const[categoriesNews, setCategoriesNews] = useState([]);
-    const[country, setCountry] = useState('us');
 
     const match = useRouteMatch();
 
     useEffect(() => {
         getCategoriesNews();
-    },[country]);
+    },[countryNews]);
 
     const getCategoriesNews = async () => {
         const{categoriesNews} = match.params;
         try{
-            const{data} = await categoriesNewsReq(country,categoriesNews);
+            const{data} = await newsForOneCategoriReq(countryNews,categoriesNews);
             setCategoriesNews(data.articles);
         }catch(err){
             console.log(err);
         }
     }
 
+    
+
     return(
         <div>
-            <Header setCountry={setCountry} />
+            <Header/>
             <div className="top-news">
             {categoriesNews.map((news) => {
                 return(
@@ -45,4 +48,10 @@ const CategoriesNews = () => {
     )
 }
 
-export default CategoriesNews;
+const mapStateToProps = (state) => {
+    return{
+        countryNews : state.newsCountry
+    }
+}
+
+export default connect(mapStateToProps)(CategoriesNews);

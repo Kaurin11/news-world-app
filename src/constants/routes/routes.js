@@ -14,3 +14,6 @@ export const generateCategoriesNewsUrl = (categoriesNews) =>  categoriesNewsUrl(
 export const searcheNewsUrl = () => `${mainViewUrl()}/searchNews`;
 
 export const expanUrl = () => '/expand';
+
+export const categoriesUrls = () => `${mainViewUrl()}/categories/:page`;
+export const generateCategoriesUrls = (page) => categoriesUrls().replace(":page", page);

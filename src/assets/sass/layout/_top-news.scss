@@ -6,7 +6,7 @@
   &__content {
     //height: 10rem;
     padding: 3.5rem;
-    width: 38rem;
+    max-width: 35rem;
     background-image: linear-gradient(
       to right bottom,
       rgba($card-bg, 0.8),
@@ -27,7 +27,7 @@
 
   &__img {
     height: 10rem;
-    width: 30rem;
+    width: 95%;
     border-radius: 3px;
   }
 
