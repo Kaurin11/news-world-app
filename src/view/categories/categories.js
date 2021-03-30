@@ -10,8 +10,6 @@ import { useSelector} from 'react-redux';
 
 const Categoires = () => {
 
-    //srediti paginaciju
-
     const[entertainmentNews, setEntertainmentNews] = useState([]);
     const[generalNews, setGeneralNews] = useState([]);
     const[healthNews, setHealthNews] = useState([]);
@@ -90,16 +88,14 @@ const Categoires = () => {
         console.log(categoriesNews)
     }
 
-    // const entertainmentHandler = ()=> {
-    //     setPage(page + 1);
-    // }
+    
 
-    // const generalHandler = ()=> {
-    //     setPage(page + 1);
-    // }
-
-    const moreHandler =() => {
+    const nextPageHandler =() => {
         history.push(generateCategoriesUrls((parseInt(page)+1)).toString());
+    }
+
+    const previousPageHandler = () => {
+        history.push(generateCategoriesUrls((parseInt(page)-1)).toString());
     }
 
     return(
@@ -108,12 +104,12 @@ const Categoires = () => {
             <h1 className="header__primary"> {selectedCountry === 'us' ? 
             (<p>&diams; Top Categories News from United State</p>) : 
             (<p>&diams; Top Categories News from Greath Britain</p>)}</h1>
-            <button  onClick={moreHandler}>{page}</button>
             <div className="accordion">
                 <section id="item1">
                     <span className="header__secondary"  onClick={() => getNewsForCategorie('entertainment')}>Entertainment</span >
                     <a href="#item1"><h1><ion-icon size="large" name="caret-down-outline"></ion-icon></h1></a>
                     <p className="categories-news">
+                    <button  onClick={previousPageHandler}> &lang; &lang; {page}</button>
                         {entertainmentNews.map((enews) =>{
                             return(
                                 <CategoriesNewsComponent
@@ -124,6 +120,7 @@ const Categoires = () => {
                                     />
                             )
                         })}
+                        <button  onClick={nextPageHandler}>{page} &rang; &rang;</button>
                     </p>
                 </section>
             
@@ -131,6 +128,7 @@ const Categoires = () => {
                     <span className="header__secondary" onClick={() => getNewsForCategorie('general')}>General</span >
                     <a href="#item2"><h1><ion-icon size="large" name="caret-down-outline"></ion-icon></h1></a>
                     <p className="categories-news">
+                    <button  onClick={previousPageHandler}> &lang; &lang; {page}</button>
                         {generalNews.map((gnews) =>{
                                 return(
                                     <CategoriesNewsComponent
@@ -141,6 +139,7 @@ const Categoires = () => {
                                         />
                                 )
                             })}
+                    <button  onClick={nextPageHandler}>{page} &rang; &rang;</button>
                     </p>
                 </section>
 
@@ -148,6 +147,7 @@ const Categoires = () => {
                 <span className="header__secondary" onClick={() => getNewsForCategorie('health')}>Health</span >
                 <a href="#item3"><h1><ion-icon size="large" name="caret-down-outline"></ion-icon></h1></a>
                 <p className="categories-news">
+                <button  onClick={previousPageHandler}> &lang; &lang; {page}</button>
                     {healthNews.map((hnews) =>{
                             return(
                                 <CategoriesNewsComponent
@@ -158,6 +158,7 @@ const Categoires = () => {
                                     />
                             )
                         })}
+                <button  onClick={nextPageHandler}>{page} &rang; &rang;</button>
                 </p>
             </section>
 
@@ -165,6 +166,7 @@ const Categoires = () => {
                 <span className="header__secondary" onClick={() => getNewsForCategorie('science')}>Science</span >
                 <a href="#item4"><h1><ion-icon size="large" name="caret-down-outline"></ion-icon></h1></a>
                 <p className="categories-news">
+                <button  onClick={previousPageHandler}> &lang; &lang; {page}</button>
                     {scienceNews.map((snews) =>{
                             return(
                                 <CategoriesNewsComponent
@@ -175,6 +177,7 @@ const Categoires = () => {
                                     />
                             )
                         })}
+                <button  onClick={nextPageHandler}>{page} &rang; &rang;</button>
                 </p>
             </section>
 
@@ -182,6 +185,7 @@ const Categoires = () => {
                 <span className="header__secondary" onClick={() => getNewsForCategorie('sport')}>Sport</span >
                 <a href="#item5"><h1><ion-icon size="large" name="caret-down-outline"></ion-icon></h1></a>
                 <p className="categories-news">
+                <button  onClick={previousPageHandler}> &lang; &lang; {page}</button>
                     {sportNews.map((spnews) =>{
                             return(
                                 <CategoriesNewsComponent
@@ -192,6 +196,7 @@ const Categoires = () => {
                                     />
                             )
                         })}
+                <button  onClick={nextPageHandler}>{page} &rang; &rang;</button>
                 </p> 
             </section>
             </div>
