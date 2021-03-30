@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-import { categoriesUrl,categoriesUrls,generateCategoriesUrls ,searcheNewsUrl, topNewsUrl } from '../../constants/routes/routes';
+import {generateCategoriesUrls ,searcheNewsUrl, topNewsUrl } from '../../constants/routes/routes';
 import './style.scss';
 
-import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/action";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { setCurrentCountryAction } from '../../store/countries/actions';
 
 // TODO: kroz redux a ne da se prosledi funckija setCountry
-const Header = ({setCountry,disabled,setCountryNewsUsStore,setCountryNewsGbStore}) => {
-
-    const [page,setPage] = useState('1');
+const Header = ({disabled}) => {
     const history = useHistory();
 
+    const dispatch = useDispatch();
+    const {selectedCountry} = useSelector(state => state.countries);
+    
     const topnewsHandler = () => {
         history.push(topNewsUrl());
     }
@@ -24,16 +25,6 @@ const Header = ({setCountry,disabled,setCountryNewsUsStore,setCountryNewsGbStore
         history.push(generateCategoriesUrls(1));
     }
 
-    // TODO: kroz redux a ne da se prosledi funckija setCountry
-    const setUscountryHandler= () => {
-        setCountry('us');
-    }
-
-    // TODO: kroz redux a ne da se prosledi funckija setCountry
-    const setGbcountryHandler= () => {
-        setCountry('gb');
-    }
-
     return(
         <div className="header">
             <div className="header__options">
@@ -42,24 +33,12 @@ const Header = ({setCountry,disabled,setCountryNewsUsStore,setCountryNewsGbStore
                 <h2 onClick={searchHandler}>Search</h2>
             </div>
             <div className="header__region">
-                <h2 onClick={() => setCountryNewsUsStore()}><button disabled={disabled}>US</button></h2>
-                <h2 onClick={() => setCountryNewsGbStore()}><button disabled={disabled}>GB</button></h2>
+                <h2 onClick={() => setCurrentCountryAction('us', dispatch)}><button disabled={disabled}>US</button></h2>
+                <h2 onClick={() => setCurrentCountryAction('gb', dispatch)}><button disabled={disabled}>GB</button></h2>
             </div>
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        countryNews : state.newsCountry
-    };
-  };
-  
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      setCountryNewsUsStore: () => dispatch(actionCreators.setCountryUs()),
-      setCountryNewsGbStore: () => dispatch(actionCreators.setCountryGb())
-    };
-  };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

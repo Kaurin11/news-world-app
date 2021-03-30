@@ -2,8 +2,6 @@ export const mainViewUrl = () => '/mainView';
 
 export const topNewsUrl = () => `${mainViewUrl()}/topNews`;
 
-export const categoriesUrl = () => `${mainViewUrl()}/categories`;
-
 export const newsInfoUrl = () => `${mainViewUrl()}/newsInfo`;
 
 export const newsInfoUrls = (content,title,urlToImage) => `${mainViewUrl()}/newsInfo?${content}&title=${title}&urlToImage=${urlToImage}`;
@@ -13,7 +11,9 @@ export const generateCategoriesNewsUrl = (categoriesNews) =>  categoriesNewsUrl(
 
 export const searcheNewsUrl = () => `${mainViewUrl()}/searchNews`;
 
-export const expanUrl = () => '/expand';
-
 export const categoriesUrls = () => `${mainViewUrl()}/categories/:page`;
 export const generateCategoriesUrls = (page) => categoriesUrls().replace(":page", page);
+
+
+export const catUrl = (page) => `${mainViewUrl()}/categories?page=${page}`;
+export const expanUrl = () => '/expand';

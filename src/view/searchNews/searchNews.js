@@ -4,21 +4,23 @@ import TopNewsComponent from '../../components/topNewsComponent/topNewsComponent
 import { topNews,searchNewsReq } from '../../constants/services/services';
 import Header from '../header/header';
 
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
-const SearchNews = ({countryNews}) => {
+const SearchNews = () => {
 
     const [serachTopNews, setSearchTopNews] = useState([]);
     const [search, setSearch] = useState('');
 
+    const {selectedCountry} = useSelector(state => state.countries);
+
     useEffect(() => {
         filterNews();
-    },[countryNews,search]);
+    },[selectedCountry,search]);
 
 
     const filterNews =async () => {
         try{
-            const {data} = await searchNewsReq(countryNews,search);
+            const {data} = await searchNewsReq(selectedCountry,search);
             console.log(data.articles);
             setSearchTopNews(data.articles);
         }catch(err){
@@ -31,7 +33,7 @@ const SearchNews = ({countryNews}) => {
 
         <div>
            <Header/>
-           <h1 className="header__primary"> {countryNews === 'us' ? 
+           <h1 className="header__primary"> {selectedCountry === 'us' ? 
             (<p>&diams; Search News from United State</p>) : 
             (<p>&diams; Search News from Greath Britain</p>)}</h1>
             <SearchBox value={search} placeholder="Search for Country..."  onChange={({target : {value}}) => setSearch(value)} />
@@ -54,10 +56,5 @@ const SearchNews = ({countryNews}) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return{
-        countryNews : state.newsCountry
-    }
-}
 
-export default connect(mapStateToProps)(SearchNews);
+export default SearchNews;

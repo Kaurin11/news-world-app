@@ -5,13 +5,19 @@ const Expand = () => {
     const [open, setOpen] = useState(false);
 
     return (
-      <div>
-        <input id="toggle" type="checkbox" checked />
-        <label for="toggle">Click to toggle</label>
-        <div id="expand">HHHHH</div>
-        <div>
-          <h1>KKKKKKK</h1>
-        </div>
+      <div className="accordion">
+        <section id="item1">
+          <a href="#item1"><h1>item1</h1></a>
+          <p>duvaj lepak</p>
+        </section>
+        <section id="item2">
+          <a href="#item2"><h1>item2</h1></a>
+          <p>duvaj lepak</p>
+        </section>
+        <section id="item3">
+          <a href="#item3"><h1>item3</h1></a>
+          <p>duvaj lepak</p>
+        </section>
       </div>
     );
   }

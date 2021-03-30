@@ -4,23 +4,25 @@ import TopNewsComponent from '../../components/topNewsComponent/topNewsComponent
 import { newsForOneCategoriReq } from '../../constants/services/services';
 import Header from '../header/header';
 
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
-const CategoriesNews = ({countryNews}) => {
+const CategoriesNews = () => {
 
-    const[categoriesNews, setCategoriesNews] = useState([]);
+    const[newsForCategorie, setNewsForCategorie] = useState([]);
+    const {selectedCountry} = useSelector(state => state.countries);
 
     const match = useRouteMatch();
+    const{categoriesNews} = match.params;
 
     useEffect(() => {
         getCategoriesNews();
-    },[countryNews]);
+    },[newsForCategorie,selectedCountry]);
 
     const getCategoriesNews = async () => {
         const{categoriesNews} = match.params;
         try{
-            const{data} = await newsForOneCategoriReq(countryNews,categoriesNews);
-            setCategoriesNews(data.articles);
+            const{data} = await newsForOneCategoriReq(selectedCountry,categoriesNews);
+            setNewsForCategorie(data.articles);
         }catch(err){
             console.log(err);
         }
@@ -31,8 +33,11 @@ const CategoriesNews = ({countryNews}) => {
     return(
         <div>
             <Header/>
+            <h1 className="header__primary"> {selectedCountry === 'us' ? 
+            (<p>&diams; Top News for {categoriesNews} from United State</p>) : 
+            (<p>&diams; Top News for {categoriesNews} from Greath Britain</p>)}</h1>
             <div className="top-news">
-            {categoriesNews.map((news) => {
+            {newsForCategorie.map((news) => {
                 return(
                     <TopNewsComponent
                         key={news.publishedAt}
@@ -48,10 +53,6 @@ const CategoriesNews = ({countryNews}) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return{
-        countryNews : state.newsCountry
-    }
-}
 
-export default connect(mapStateToProps)(CategoriesNews);
+
+export default CategoriesNews;

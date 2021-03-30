@@ -3,19 +3,20 @@ import TopNewsComponent from '../../components/topNewsComponent/topNewsComponent
 import { getTopNewsUs, topNews } from '../../constants/services/services';
 import Header from '../header/header';
 
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
-const TopNews = ({countryNews}) => {
+const TopNews = () => {
 
     const [topNewsUs, setTopNewsUs] = useState([]);
+    const {selectedCountry} = useSelector(state => state.countries);
 
     useEffect(() => {
         getNewsUs();
-    },[countryNews]);
+    },[selectedCountry]);
 
     const getNewsUs =async () => {
         try{
-            const {data} = await topNews(countryNews);
+            const {data} = await topNews(selectedCountry);
             console.log(data);
             setTopNewsUs(data.articles);
             console.log(topNewsUs)
@@ -29,7 +30,7 @@ const TopNews = ({countryNews}) => {
         <div>
         {/* // TODO: kroz redux a ne da se prosledi funckija setCountry */}
         <Header />
-        <h1 className="header__primary"> {countryNews === 'us' ? 
+        <h1 className="header__primary"> {selectedCountry === 'us' ? 
             (<p>&diams; Top News from United State</p>) : 
             (<p>&diams; Top News from Greath Britain</p>)}</h1>
         <div className="top-news">
@@ -49,14 +50,4 @@ const TopNews = ({countryNews}) => {
     )
 }
 
-// Ovde cemo imati mapSTATEtoProps i ovaj drugi.... taj prvi je zapravo podatak iz StoreMallDirectory,
-// a ovaj drugi je finkicja koja to menja... umesto coutry i setCoutry treba to da uradim preko store
-
-
-const mapStateToProps = (state) => {
-    return{
-        countryNews : state.newsCountry
-    }
-}
-
-export default connect(mapStateToProps)(TopNews);
+export default TopNews;
