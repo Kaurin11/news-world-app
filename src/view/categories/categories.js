@@ -6,7 +6,8 @@ import { generateCategoriesNewsUrl, generateCategoriesUrls } from '../../constan
 import { categoriesNewsReq} from '../../constants/services/services';
 import Header from '../header/header';
 
-import { useSelector} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
+import { getCategoriesAction } from '../../store/news/actions';
 
 const Categoires = () => {
 
@@ -23,6 +24,8 @@ const Categoires = () => {
 
     const {selectedCountry} = useSelector(state => state.countries);
 
+    const {categoriesNews} = useSelector(state => state.news);
+    const dispatch = useDispatch();
 
     useEffect(()=> {
         getEntertainmentNews();
@@ -32,6 +35,10 @@ const Categoires = () => {
         getSportNews();
     },[selectedCountry, page]);
     
+
+    // const getEntertainmentNews = () => {
+    //     getCategoriesAction(selectedCountry,page, 'entertainment', dispatch)
+    // }
 
     const getEntertainmentNews =async () => {
         try{
@@ -95,7 +102,11 @@ const Categoires = () => {
     }
 
     const previousPageHandler = () => {
-        history.push(generateCategoriesUrls((parseInt(page)-1)).toString());
+        if(page <= 1){
+            return null
+        }else{
+            history.push(generateCategoriesUrls((parseInt(page)-1)).toString())
+        } 
     }
 
     return(

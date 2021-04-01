@@ -13,6 +13,10 @@ const NewsInfo = ({location}) => {
     const article = qs.parse(location.search);
     console.log(article)
 
+    // useEffect(() => {
+    //     setDisableAcion(true, dispatch);
+    // }, []);
+
     const goBackHandler =() => {
         history.goBack();
     }

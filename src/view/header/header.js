@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import {generateCategoriesUrls ,searcheNewsUrl, topNewsUrl } from '../../constants/routes/routes';
 import './style.scss';
 
-import { connect, useDispatch, useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { setCurrentCountryAction } from '../../store/countries/actions';
 
 // TODO: kroz redux a ne da se prosledi funckija setCountry
@@ -12,6 +12,7 @@ const Header = ({disabled}) => {
 
     const dispatch = useDispatch();
     const {selectedCountry} = useSelector(state => state.countries);
+    
     
     const topnewsHandler = () => {
         history.push(topNewsUrl());

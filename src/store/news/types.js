@@ -1,0 +1,5 @@
+export const SET_TOP_NEWS = 'SET_TOP_NEWS'; 
+
+export const SET_CATEGORIE_NEWS = 'SET_CATEGORIE_NEWS'; 
+
+export const SET_NEWS_FOR_CATEGORIE = 'SET_NEWS_FOR_CATEGORIE'; 

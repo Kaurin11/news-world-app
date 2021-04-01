@@ -5,7 +5,7 @@ export const topNewsUs = `${baseRequest}/top-headlines?country=us&apiKey=a418cd0
 
 export const getTopNewsUs = () => Axios.get(topNewsUs);
 
-export const topNews = (country) => Axios.get(`${baseRequest}/top-headlines?country=${country}&apiKey=a418cd0fe92444819a4ef4a60486de87`);
+export const getTopNews = (country) => Axios.get(`${baseRequest}/top-headlines?country=${country}&apiKey=a418cd0fe92444819a4ef4a60486de87`);
 
 export const categoriesNewsReq = (country,page,category) => Axios.get(`${baseRequest}/top-headlines?country=${country}&pageSize=5&page=${page}&category=${category}&apiKey=a418cd0fe92444819a4ef4a60486de87`);
 
