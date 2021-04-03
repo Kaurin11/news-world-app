@@ -7,8 +7,11 @@ import {  useDispatch, useSelector } from "react-redux";
 import { setCurrentCountryAction } from '../../store/countries/actions';
 
 // TODO: kroz redux a ne da se prosledi funckija setCountry
-const Header = ({disabled}) => {
+const Header = () => {
     const history = useHistory();
+
+    const {disabledCountry} = useSelector(state => state.countries);
+    console.log(disabledCountry)
 
     const dispatch = useDispatch();
     const {selectedCountry} = useSelector(state => state.countries);
@@ -34,8 +37,8 @@ const Header = ({disabled}) => {
                 <h2 onClick={searchHandler}>Search</h2>
             </div>
             <div className="header__region">
-                <h2 onClick={() => setCurrentCountryAction('us', dispatch)}><button disabled={disabled}>US</button></h2>
-                <h2 onClick={() => setCurrentCountryAction('gb', dispatch)}><button disabled={disabled}>GB</button></h2>
+                <h2 onClick={() => setCurrentCountryAction('us', dispatch)}><button disabled={disabledCountry}>US</button></h2>
+                <h2 onClick={() => setCurrentCountryAction('gb', dispatch)}><button disabled={disabledCountry}>GB</button></h2>
             </div>
         </div>
     )

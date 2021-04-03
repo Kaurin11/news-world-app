@@ -4,6 +4,7 @@ import { categoriesUrls, newsInfoUrl, topNewsUrl,categoriesNewsUrl, searcheNewsU
 import Categoires from './categories/categories';
 import CategoriesNews from './categoriesNews/categoriesNews';
 import Expand from './expand/expand';
+import Header from './header/header';
 import NewsInfo from './newsInfo/newsInfo';
 import SearchNews from './searchNews/searchNews';
 import TopNews from './topNews/topNews';
@@ -12,6 +13,7 @@ const MainView = () => {
 
     return(
         <div>
+            <Header />
             <Switch>
                 <Route path={topNewsUrl()} component={TopNews} />
                 <Route path={categoriesUrls()} component={Categoires} />

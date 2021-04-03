@@ -32,7 +32,6 @@ const SearchNews = () => {
     return(
 
         <div>
-           <Header/>
            <h1 className="header__primary"> {selectedCountry === 'us' ? 
             (<p>&diams; Search News from United State</p>) : 
             (<p>&diams; Search News from Greath Britain</p>)}</h1>

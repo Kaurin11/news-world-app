@@ -43,7 +43,6 @@ const CategoriesNews = () => {
 
     return(
         <div>
-            <Header/>
             <h1 className="header__primary"> {selectedCountry === 'us' ? 
             (<p>&diams; Top News for {categoriesNews} from United State</p>) : 
             (<p>&diams; Top News for {categoriesNews} from Greath Britain</p>)}</h1>

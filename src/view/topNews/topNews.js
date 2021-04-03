@@ -24,7 +24,6 @@ const TopNews = () => {
     return(
         <div>
         {/* // TODO: kroz redux a ne da se prosledi funckija setCountry */}
-        <Header />
         <h1 className="header__primary"> {selectedCountry === 'us' ? 
             (<p>&diams; Top News from United State</p>) : 
             (<p>&diams; Top News from Greath Britain</p>)}</h1>
