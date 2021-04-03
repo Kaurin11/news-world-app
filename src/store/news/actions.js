@@ -35,16 +35,15 @@ export const setNewsForCategorieAction = () =>(newsForCategries, dispatch) => {
 export const getNewsForCategorieAction =  async (country,categorieNews,dispatch) => {
     try{
         const{data} = await newsForOneCategoriReq(country,categorieNews);
-        var newsForCategries = data.articles;
+        const newsForCategries = data.articles;
         console.log(newsForCategries);
+        dispatch({
+            type:  SET_NEWS_FOR_CATEGORIE,
+            payload: {  newsForCategries: newsForCategries }
+        })
     }catch(err){
         console.log(err);
     }
-
-    dispatch({
-        type:  SET_NEWS_FOR_CATEGORIE,
-        payload: {  newsForCategries: newsForCategries }
-    })
 }
 
 

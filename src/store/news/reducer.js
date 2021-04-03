@@ -1,4 +1,3 @@
-import { SET_DISABLED } from "../countries/types";
 import { SET_CATEGORIE_NEWS, SET_TOP_NEWS,SET_NEWS_FOR_CATEGORIE } from "./types";
 
 const initialState = {
@@ -13,7 +12,7 @@ export const newsReducer =  (state = initialState, action) =>{
             ...state,
             ...action.payload
         }
-        case SET_DISABLED: 
+        case SET_NEWS_FOR_CATEGORIE: 
         return {
             ...state,
             ...action.payload

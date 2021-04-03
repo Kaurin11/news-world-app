@@ -17,6 +17,7 @@ const CategoriesNews = () => {
     const {newsForCategries} = useSelector(state => state.news);
     const dispatch = useDispatch();
 
+
     const match = useRouteMatch();
     const{categoriesNews} = match.params;
 
