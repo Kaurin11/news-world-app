@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import TopNewsComponent from '../../components/topNewsComponent/topNewsComponent';
-import { getTopNewsUs, getTopNews } from '../../constants/services/services';
-import Header from '../header/header';
 
 import {useDispatch, useSelector} from 'react-redux';
 import { getTopNewsAction } from '../../store/news/actions';

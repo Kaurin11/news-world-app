@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Header from '../header/header';
 
 import qs from 'query-string';
 import Button from '../../components/button/button';

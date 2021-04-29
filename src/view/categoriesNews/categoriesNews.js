@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRouteMatch } from 'react-router';
 import TopNewsComponent from '../../components/topNewsComponent/topNewsComponent';
-import { newsForOneCategoriReq } from '../../constants/services/services';
-import Header from '../header/header';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {  getNewsForCategorieAction } from '../../store/news/actions';

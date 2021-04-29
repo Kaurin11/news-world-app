@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import Collapse from 'react-bootstrap/Collapse'
+import React from 'react';
 
 const Expand = () => {
-    const [open, setOpen] = useState(false);
 
     return (
       <div className="accordion">
