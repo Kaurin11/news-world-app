@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useParams, useRouteMatch } from 'react-router';
+import { useHistory, useRouteMatch } from 'react-router';
 import CategoriesNewsComponent from '../../components/categoriesNewsComponent/categoriesNewsComponent';
 import { generateCategoriesNewsUrl, generateCategoriesUrls } from '../../constants/routes/routes';
 
 import { categoriesNewsReq} from '../../constants/services/services';
-import Header from '../header/header';
 
 import { useDispatch, useSelector} from 'react-redux';
-import { getCategoriesAction } from '../../store/news/actions';
 
 const Categoires = () => {
 
@@ -20,12 +18,8 @@ const Categoires = () => {
     const history = useHistory();
     const match = useRouteMatch();
     const {page} = match.params;
-    console.log(page);
 
     const {selectedCountry} = useSelector(state => state.countries);
-
-    const {categoriesNews} = useSelector(state => state.news);
-    const dispatch = useDispatch();
 
     useEffect(()=> {
         getEntertainmentNews();

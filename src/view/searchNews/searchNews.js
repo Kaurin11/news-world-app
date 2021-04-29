@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SearchBox from '../../components/searchBox/searchBox';
 import TopNewsComponent from '../../components/topNewsComponent/topNewsComponent';
-import { topNews,searchNewsReq } from '../../constants/services/services';
-import Header from '../header/header';
+import { searchNewsReq } from '../../constants/services/services';
 
 import {useSelector} from 'react-redux';
 
